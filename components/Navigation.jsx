@@ -3,21 +3,23 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Navigation = () => {
+  const { data: session } = useSession();
   const isUserLoggedIn = true;
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
-  useEffect(() => {
-    const setProvidersAsync = async () => {
+  const setupProviders = async () => {
       const response = await getProviders();
       setProviders(response);
     }
-    setProvidersAsync();
-  }, [])
+  
+  useEffect(() => {
+    setupProviders();
+  }, []);
 
   return (
     <nav className='flex-between w-full mb-16 pt-3'>
@@ -78,7 +80,7 @@ const Navigation = () => {
               height={37}
               className='rounded-full'
               alt='profile'
-              onClick={() => setToggleDropdown((prev) => !prev)}
+              onClick={() => setToggleDropdown(!toggleDropdown)}
             />
 
             {toggleDropdown && (
@@ -132,4 +134,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+export default Navigation;
