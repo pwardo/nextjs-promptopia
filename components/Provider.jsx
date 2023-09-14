@@ -1,5 +1,6 @@
-"use client";
-import { SessionProvider } from "next-auth/react"
+'use client';
+
+import { SessionProvider } from "next-auth/react";
 
 const Provider = ({children, session }) => {
   return (
@@ -9,4 +10,4 @@ const Provider = ({children, session }) => {
   )
 }
 
-export default Provider
+export default Provider;
