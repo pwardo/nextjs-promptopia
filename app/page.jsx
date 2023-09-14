@@ -1,3 +1,6 @@
+"use client";
+import Feed from '@components/Feed';
+
 function Home() {
   return (
     <section className="w-full flex-center flex-col">
@@ -8,6 +11,7 @@ function Home() {
       <p className="desc text-center">
         Promptopia is an open source AI prompting tool for everyone to discover, create and share creative AI prompts
       </p>
+      <Feed />
     </section>
   )
 }
