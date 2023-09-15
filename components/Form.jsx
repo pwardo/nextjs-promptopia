@@ -2,15 +2,15 @@ import Link from 'next/link';
 
 const Form = ({
   type,
-  post,
-  setPost,
+  prompt,
+  setPrompt,
   submitting,
   handleSubmit
 }) => {
   return (
     <section className='w-full max-w-full flex-start flex-col'>
       <h1 className='head_text tex-left'>
-        <span className='blue_gradient'>{type} Post</span>
+        <span className='blue_gradient'>{type} Prompt</span>
       </h1>
       <p className='desc text-left max-w-md'>
         {type} and share your AI prompts with the world
@@ -23,8 +23,8 @@ const Form = ({
           <span className='font-satoshi font-semibold text-base text-gray-700'>Your AI Prompt</span>
           <textarea 
             className='form_textarea'
-            value={post.prompt}
-            onChange={(e) => setPost({...post, prompt: e.target.value})}
+            value={prompt.prompt}
+            onChange={(e) => setPrompt({...prompt, prompt: e.target.value})}
             placeholder='Enter your AI Prompt here'
             required
           />
@@ -35,8 +35,8 @@ const Form = ({
           </span>
           <input 
             className='form_input'
-            value={post.tag}
-            onChange={(e) => setPost({...post, tag: e.target.value})}
+            value={prompt.tag}
+            onChange={(e) => setPrompt({...prompt, tag: e.target.value})}
             placeholder='#tag'
             required
           />

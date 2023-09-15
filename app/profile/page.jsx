@@ -10,6 +10,7 @@ const MyProfile = () => {
 
   const { data: session } = useSession();
   const [prompts, setPrompts] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchPrompts = async () => {
@@ -22,9 +23,8 @@ const MyProfile = () => {
     if(session?.user.id) fetchPrompts();
   }, []);
 
-
-  const handleEdit = () => {
-
+  const handleEdit = (prompt) => {
+    router.push(`/edit-prompt/?id=${prompt._id}`);
   }
 
   const handleDelete = async () => {
