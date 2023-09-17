@@ -27,8 +27,21 @@ const MyProfile = () => {
     router.push(`/edit-prompt/?id=${prompt._id}`);
   }
 
-  const handleDelete = async () => {
+  const handleDelete = async (prompt) => {
+    const hasConfirmed = confirm('Are you sure you want to delete this prompt?');
+    if(hasConfirmed) {
+      try {
+        await fetch(`/api/prompt/${prompt._id}`, {
+          method: 'DELETE'
+        });
 
+        const filteredPrompts = prompts.filter(p => p._id !== prompt._id);
+        setPrompts(filteredPrompts);
+      }
+       catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   return (
@@ -42,4 +55,4 @@ const MyProfile = () => {
   )
 }
 
-export default MyProfile
+export default MyProfile;
