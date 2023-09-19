@@ -33,9 +33,6 @@ const PromptCard = ({ prompt, handleTagClick, handleEdit, handleDelete }) => {
             <h3 className='font-satoshi font-semibold text-gray-900'>
               {prompt.creator.username}
             </h3>
-            <p className='font-inter text-gray-500 text-sm'>
-              {prompt.creator.email}
-            </p>
           </div>
         </div>
 
